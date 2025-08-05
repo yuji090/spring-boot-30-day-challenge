@@ -1,6 +1,7 @@
 package com.example.userApi.Controller;
 
 import com.example.userApi.Model.User;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,10 @@ public class UserController {
 
     //post
     @PostMapping("/add")
-    public void add(@RequestBody User user){
+    public List<User> add(@RequestBody @Valid User user){
         users.add(user);
+        return users;
+
     }
 
     @PutMapping("/update/{id}")

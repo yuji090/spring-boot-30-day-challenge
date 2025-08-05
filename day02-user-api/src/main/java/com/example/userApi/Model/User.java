@@ -1,10 +1,20 @@
 package com.example.userApi.Model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.springframework.lang.NonNull;
+
 public class User {
 
     private int id;
+
+    @Size(min = 2, max = 7, message = "Name must be between 2 to 7 characters")
     private String name;
+
+    @Email(message = "Invalid email format")
     private String email;
+
 
     public User(){
 
