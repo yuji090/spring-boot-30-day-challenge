@@ -1,6 +1,7 @@
 package com.example.BookApi.book;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,22 +12,20 @@ public class BookService {
 
     List<Book> books = new ArrayList<>();
 
+    @Autowired
+    private BookRepository bookRepository;
+
     public void addBook(Book book){
-        books.add(book);
+        bookRepository.save(book);
     }
 
     public List<Book> getAllBooks() {
-        return books;
+        return bookRepository.findAll();
     }
 
-    public Book showbyid(int id){
-        for(Book b: books){
-            if(b.getId()==id){
-                return b;
-            }
+    public Book showbyid(Long id){
 
-        }
-        return null;
+       return bookRepository.findById(id).orElse(null);
     }
 
 }

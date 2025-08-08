@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @GetMapping("/display/{id}")
-    public Book display(@PathVariable int id){
+    public Book display(@PathVariable Long id){
         return bookService.showbyid(id);
 
     }
